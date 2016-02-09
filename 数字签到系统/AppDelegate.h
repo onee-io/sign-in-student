@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  数字签到系统
 //
-//  Created by 王宇 on 15/10/22.
+//  Created by 熊思瑶 on 15/10/22.
 //  Copyright © 2015年 XiongSiYao. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) UIViewController *viewController;
 
 @end
 
