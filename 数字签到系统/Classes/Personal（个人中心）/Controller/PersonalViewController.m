@@ -97,13 +97,13 @@
     
     NSString *url = @"http://192.168.0.104/45min/login.php";
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    [mgr GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _userDict = responseObject;
         [hud hide:YES];
         if ([@"200" isEqualToString:self.userDict[@"code"]]) {
             [self initUser];
-            [self hudForSuccess];
+            [self setUserPage];
         } else {
             if ([@"402" isEqualToString:self.userDict[@"code"]]) {
                 NSLog(@"密码错误");
@@ -158,6 +158,59 @@
     hud.labelText = @"登录失败!";
     [hud show:YES];
     [hud hide:YES afterDelay:1.0];
+}
+
+/**
+ * 设置个人中心页面
+ */
+- (void)setUserPage {
+    // 移除所有控件
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self hudForSuccess];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenW = screenRect.size.width;
+    
+    CGFloat userNameX = vMargin;
+    CGFloat userNameY = vMargin;
+    CGFloat userNameW = screenW - 2 * vMargin;
+    CGFloat userNameH = 2 * vMargin;
+    UILabel *username = [[UILabel alloc] initWithFrame:CGRectMake(userNameX, userNameY, userNameW, userNameH)];
+    username.text = [NSString stringWithFormat:@"用户名：%@", self.user.username];
+    [self.view addSubview:username];
+    
+    CGFloat emailX = vMargin;
+    CGFloat emailY = userNameY + userNameH + vMargin;;
+    CGFloat emailW = screenW - 2 * vMargin;
+    CGFloat emailH = 2 * vMargin;
+    UILabel *email = [[UILabel alloc] initWithFrame:CGRectMake(emailX, emailY, emailW, emailH)];
+    email.text = [NSString stringWithFormat:@"邮箱：%@", self.user.email];
+    [self.view addSubview:email];
+    
+    CGFloat nickNameX = vMargin;
+    CGFloat nickNameY = emailY + emailH + vMargin;
+    CGFloat nickNameW = screenW - 2 * vMargin;
+    CGFloat nickNameH = 2 * vMargin;
+    UILabel *nickname = [[UILabel alloc] initWithFrame:CGRectMake(nickNameX, nickNameY, nickNameW, nickNameH)];
+    nickname.text = [NSString stringWithFormat:@"昵称：%@", self.user.nickname];
+    [self.view addSubview:nickname];
+    
+    CGFloat numberX = vMargin;
+    CGFloat numberY = nickNameY + nickNameH + vMargin;
+    CGFloat numberW = screenW - 2 * vMargin;
+    CGFloat numberH = 2 * vMargin;
+    UILabel *number = [[UILabel alloc] initWithFrame:CGRectMake(numberX, numberY, numberW, numberH)];
+    number.text = [NSString stringWithFormat:@"学号：%@", self.user.number];
+    [self.view addSubview:number];
+    
+    CGFloat lastTimeX = vMargin;
+    CGFloat lastTimeY = numberY + numberH + vMargin;
+    CGFloat lastTimeW = screenW - 2 * vMargin;
+    CGFloat lastTimeH = 2 * vMargin;
+    UILabel *lastTime = [[UILabel alloc] initWithFrame:CGRectMake(lastTimeX, lastTimeY, lastTimeW, lastTimeH)];
+    lastTime.text = [NSString stringWithFormat:@"最后登录时间：%@", self.user.last_time];
+    [self.view addSubview:lastTime];
+
 }
 
 @end
