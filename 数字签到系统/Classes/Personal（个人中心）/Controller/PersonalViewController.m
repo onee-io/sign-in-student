@@ -29,6 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 将状态栏设置为白色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
+    };
     self.navigationItem.title = @"个人中心";
     [self setLoginPage];
 }
@@ -70,7 +76,7 @@
     CGFloat loginBtnW = screenW - 2 * vMargin;
     CGFloat loginBtnH = 2 * vMargin;
     UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(loginBtnX, loginBtnY, loginBtnW, loginBtnH)];
-    [loginBtn setBackgroundColor:[UIColor colorWithRed:50/255.0 green:220/255.0 blue:181/255.0 alpha:1.0]];
+    [loginBtn setBackgroundColor:[UIColor colorWithRed:25/255.0 green:187/255.0 blue:155/255.0 alpha:1.0]];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     // 设置按钮圆角
     loginBtn.layer.cornerRadius = 5.0;

@@ -21,6 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 将状态栏设置为白色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
+    };
     self.navigationItem.title = @"考勤统计";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -56,7 +62,7 @@
 }
 
 - (UIColor *)barChartView:(MCBarChartView *)barChartView colorOfBarInSection:(NSInteger)section index:(NSInteger)index {
-    return [UIColor colorWithRed:50/255.0 green:220/255.0 blue:181/255.0 alpha:1.0];
+    return [UIColor colorWithRed:25/255.0 green:187/255.0 blue:155/255.0 alpha:1.0];
 }
 
 - (NSString *)barChartView:(MCBarChartView *)barChartView titleOfBarInSection:(NSInteger)section {

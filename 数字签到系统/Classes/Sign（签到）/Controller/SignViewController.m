@@ -17,7 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 将状态栏设置为白色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
+    };
     self.navigationItem.title = @"课程签到";
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    NSLog(@"%s",__func__);
+    return UIStatusBarStyleLightContent;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
