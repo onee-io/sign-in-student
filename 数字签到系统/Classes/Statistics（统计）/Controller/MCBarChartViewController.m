@@ -28,8 +28,8 @@
         NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
     };
     self.navigationItem.title = @"考勤统计";
+    [self.view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:239/255.0 blue:241/255.0 alpha:1.0]];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
     
     _titles = @[@"语文", @"数学", @"英语", @"物理", @"化学", @"生物"];
     _dataSource = [NSMutableArray arrayWithArray:@[@100, @80, @90, @100, @100, @90]];

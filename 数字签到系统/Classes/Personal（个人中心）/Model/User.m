@@ -12,12 +12,15 @@
 
 - (instancetype)initWithDict:(NSDictionary *)dict{
     if (self = [super init]) {
-        _username = dict[@"data"][@"username"];
-        _email = dict[@"data"][@"email"];
-        _nickname = dict[@"data"][@"nickname"];
+        _realname = dict[@"data"][@"realname"];
         _number = dict[@"data"][@"number"];
-        _create_time = dict[@"data"][@"create_time"];
+        _password = dict[@"data"][@"password"];
         _last_time = dict[@"data"][@"last_time"];
+        _sex = dict[@"data"][@"sex"];
+        _department = dict[@"data"][@"department"];
+        _major = dict[@"data"][@"major"];
+        _grade = dict[@"data"][@"grade"];
+        _class_n = dict[@"data"][@"class"];
     }
     return self;
 }
@@ -28,7 +31,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"username = %@, email = %@, nickname = %@, number = %@, create_time = %@, last_time = %@", self.username, self.email, self.nickname, self.number, self.create_time, self.last_time];
+    return [NSString stringWithFormat:@"realname = %@, number = %@, last_time = %@, sex = %@, department = %@, major = %@, grade = %@, class = %@", self.realname, self.number, self.last_time, self.sex, self.department, self.major, self.grade, self.class_n];
 }
 
 @end

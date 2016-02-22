@@ -24,6 +24,7 @@
         NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
     };
     self.navigationItem.title = @"课程签到";
+    [self.view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:239/255.0 blue:241/255.0 alpha:1.0]];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

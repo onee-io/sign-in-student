@@ -11,17 +11,17 @@
 #import "User.h"
 #import "MBProgressHUD+MJ.h"
 #import "NSString+Hash.h"
+#import "FMDB.h"
+#import "LoginPage.h"
+#import "UserPage.h"
 
 #define vMargin 20
 
-@interface PersonalViewController ()
+@interface PersonalViewController () <LoginPageDelegate, UserPageDelegate>
 
-@property (nonatomic, strong) UITextField *userName;
-@property (nonatomic, strong) UITextField *password;
 @property (nonatomic, strong) NSDictionary *userDict;
 @property (nonatomic, strong) User *user;
-
-
+@property (nonatomic, strong) FMDatabase *db;
 
 @end
 
@@ -35,60 +35,98 @@
         NSForegroundColorAttributeName: [UIColor whiteColor],
         NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
     };
-    self.navigationItem.title = @"个人中心";
-    [self setLoginPage];
+    self.navigationItem.title = @"个人中心";    
+    [self initData];
+    [self checkUser];
 }
 
-/*
- * 设置登陆页面
- */
-- (void)setLoginPage {
+#pragma mark 初始化数据库
+- (void)initData {
+    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [cachePath stringByAppendingPathComponent:@"user.sqlite"];
+    self.db = [FMDatabase databaseWithPath:filePath];
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenW = screenRect.size.width;
-    
-    // 用户名输入框
-    CGFloat userNameX = vMargin;
-    CGFloat userNameY = vMargin;
-    CGFloat userNameW = screenW - 2 * vMargin;
-    CGFloat userNameH = 2 * vMargin;
-    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(userNameX, userNameY, userNameW, userNameH)];
-    self.userName.placeholder = @"请输入用户名";
-    [self.userName setBorderStyle:UITextBorderStyleRoundedRect];
-    self.userName.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:self.userName];
-    
-    // 密码输入框
-    CGFloat passwordX = vMargin;
-    CGFloat passwordY = userNameY + userNameH + vMargin;
-    CGFloat passwordW = screenW - 2 * vMargin;
-    CGFloat passwordH = 2 * vMargin;
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(passwordX, passwordY, passwordW, passwordH)];
-    self.password.placeholder = @"请输入密码";
-    self.password.secureTextEntry = YES;
-    [self.password setBorderStyle:UITextBorderStyleRoundedRect];
-    self.password.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:self.password];
-    
-    // 登录按钮
-    CGFloat loginBtnX = vMargin;
-    CGFloat loginBtnY = passwordY + passwordH + vMargin;
-    CGFloat loginBtnW = screenW - 2 * vMargin;
-    CGFloat loginBtnH = 2 * vMargin;
-    UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(loginBtnX, loginBtnY, loginBtnW, loginBtnH)];
-    [loginBtn setBackgroundColor:[UIColor colorWithRed:25/255.0 green:187/255.0 blue:155/255.0 alpha:1.0]];
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    // 设置按钮圆角
-    loginBtn.layer.cornerRadius = 5.0;
-    [loginBtn addTarget:self action:@selector(clickLoginBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loginBtn];
-    
+    if ([self.db open]) {
+        NSLog(@"数据库打开成功");
+        if (![self isTableOK:@"t_user"]) {
+            // 创建用户信息表
+            NSString *sql = @"CREATE TABLE `t_user` (`realname` varchar(100) NOT NULL,`number` varchar(100) NOT NULL,`password` varchar(100) NOT NULL,`last_time` varchar(100) NOT NULL,`sex` varchar(100) NOT NULL,`department` varchar(100) NOT NULL,`major` varchar(100) NOT NULL,`grade` varchar(100) NOT NULL,`class` varchar(100) NOT NULL,PRIMARY KEY (`number`));";
+            if ([self.db executeUpdate:sql]) {
+                NSLog(@"创建user表成功");
+            } else {
+                NSLog(@"创建user表失败");
+            }
+        }
+    } else {
+        NSLog(@"数据库打开失败");
+    }
 }
 
-/*
- * 登录按钮的监听事件
- */
-- (void)clickLoginBtn:(UIButton *)sender {
+#pragma mark 检查数据库中是否有登录用户
+- (void)checkUser {
+    NSString *sql = @"SELECT * FROM 't_user'";
+    FMResultSet *result = [self.db executeQuery:sql];
+    NSMutableArray *userGroup = [NSMutableArray array];
+    while ([result next]) {
+        User *user = [[User alloc] init];
+        user.realname = [result stringForColumn:@"realname"];
+        user.number = [result stringForColumn:@"number"];
+        user.password = [result stringForColumn:@"password"];
+        user.last_time = [result stringForColumn:@"last_time"];
+        user.sex = [result stringForColumn:@"sex"];
+        user.department = [result stringForColumn:@"department"];
+        user.major = [result stringForColumn:@"major"];
+        user.grade = [result stringForColumn:@"grade"];
+        user.class_n = [result stringForColumn:@"class"];
+        [userGroup addObject:user];
+    }
+    if (userGroup.count != 0) {
+        NSLog(@"数据库中有数据 ＝＝＝＝＝＝ %lu", (unsigned long)userGroup.count);
+        [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        User *user = userGroup[0];
+        UserPage *userPage = [[UserPage alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        userPage.delegate = self;
+        userPage.user = user;
+        [self.view addSubview:userPage];
+        [self hudForSuccess];
+    } else {
+        NSLog(@"数据库中没有数据");
+        [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        LoginPage *loginPage = [[LoginPage alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        loginPage.delegate = self;
+        [self.view addSubview:loginPage];
+    }
+}
+
+
+#pragma mark 判断sqlite数据库中是否存在一张表
+- (BOOL) isTableOK:(NSString *)tableName
+{
+    FMResultSet *rs = [self.db executeQuery:@"select count(*) as 'count' from sqlite_master where type ='table' and name = ?", tableName];
+    while ([rs next])
+    {
+        NSInteger count = [rs intForColumn:@"count"];
+        if (0 == count) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark 判断某张表中是否存在某一条数据
+- (BOOL)isExistDataForColumn:(NSString *)column Value:(NSString *)value TableName:(NSString *)tableName {
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM '%@' WHERE %@ = '%@'", tableName, column, value];
+    FMResultSet *result = [self.db executeQuery:sql];
+    while ([result next]) {
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark 登录按钮代理方法
+- (void)loginPageClickBtn:(LoginPage *)loginPage Number:(NSString *)number Password:(NSString *)password {
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] init];
     [self.view addSubview:hud];
@@ -97,50 +135,73 @@
     [hud show:YES];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"username"] = [NSString stringWithFormat:@"\'%@\'",self.userName.text];
-    params[@"password"] = [self.password.text md5String];
+    params[@"number"] = number;//[NSString stringWithFormat:@"\'%@\'",number];
+    params[@"password"] = [password md5String];
     params[@"format"] = @"json";
     
-    NSString *url = @"http://192.168.0.104/45min/login.php";
+    NSString *url = @"http://tokusa.cn/login.php";
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    mgr.requestSerializer.timeoutInterval = 10.0; // timeout: 10seconed
     [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _userDict = responseObject;
+        NSLog(@"%@",responseObject);
         [hud hide:YES];
         if ([@"200" isEqualToString:self.userDict[@"code"]]) {
+//            NSLog(@"登录成功");
             [self initUser];
-            [self setUserPage];
+            [self checkUser];
         } else {
             if ([@"402" isEqualToString:self.userDict[@"code"]]) {
                 NSLog(@"密码错误");
+                [self hudForErrorMessage:@"密码错误!"];
             } else if ([@"403" isEqualToString:self.userDict[@"code"]]) {
                 NSLog(@"无此用户");
+                [self hudForErrorMessage:@"无此用户!"];
             } else if ([@"405" isEqualToString:self.userDict[@"code"]]) {
                 NSLog(@"数据库连接失败");
+                [self hudForErrorMessage:@"数据库连接失败!"];
             }
-            [self hudForError];
+//            [self hudForErrorMessage:@"登录失败!"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [hud hide:YES];
         NSLog(@"error %@", error);
+        [self hudForErrorMessage:@"请求失败，请重试！"];
     }];
-    
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
-/**
- * 初始化用户信息
- */
+#pragma mark 向sqlite存储用户信息
 - (void)initUser {
-    _user = [User userWithDict:self.userDict];
-    NSLog(@"%@", _user);
+    self.user = [User userWithDict:self.userDict];
+    if (![self isExistDataForColumn:@"number" Value:self.user.number TableName:@"t_user"]) {
+        NSLog(@"不存在数据");
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO `t_user` VALUES ('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')",self.user.realname, self.user.number, self.user.password, self.user.last_time, self.user.sex, self.user.department, self.user.major, self.user.grade, self.user.class_n];
+        
+        if ([self.db executeUpdate:sql]) {
+            NSLog(@"插入数据成功");
+        } else {
+            NSLog(@"插入数据失败");
+        }
+    } else {
+        NSLog(@"已存在数据");
+    }
+    NSLog(@"%@", self.user);
 }
 
-/**
- * 显示登陆成功信息
- */
+#pragma mark 退出登录代理方法
+- (void)userPageClickLogoutBtn:(UserPage *)userPage User:(User *)user{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM 't_user' WHERE number = %@;", user.number];
+    if ([self.db executeUpdate:sql]) {
+        NSLog(@"退出成功！");
+        [self checkUser];
+    } else {
+        NSLog(@"退出失败！");
+    }
+}
+
+
+#pragma mark 显示登陆成功信息
 - (void)hudForSuccess {
     MBProgressHUD *hud = [[MBProgressHUD alloc] init];
     [self.view addSubview:hud];
@@ -152,71 +213,17 @@
     [hud hide:YES afterDelay:1.0];
 }
 
-/**
- * 显示登陆失败信息
- */
-- (void)hudForError {
+#pragma mark 显示登陆失败信息
+- (void)hudForErrorMessage:(NSString *)message {
     MBProgressHUD *hud = [[MBProgressHUD alloc] init];
     [self.view addSubview:hud];
     hud.removeFromSuperViewOnHide = YES;
     hud.mode = MBProgressHUDModeCustomView;
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/error.png"]]];
-    hud.labelText = @"登录失败!";
+    hud.labelText = message;
     [hud show:YES];
     [hud hide:YES afterDelay:1.0];
 }
 
-/**
- * 设置个人中心页面
- */
-- (void)setUserPage {
-    // 移除所有控件
-    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self hudForSuccess];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenW = screenRect.size.width;
-    
-    CGFloat userNameX = vMargin;
-    CGFloat userNameY = vMargin;
-    CGFloat userNameW = screenW - 2 * vMargin;
-    CGFloat userNameH = 2 * vMargin;
-    UILabel *username = [[UILabel alloc] initWithFrame:CGRectMake(userNameX, userNameY, userNameW, userNameH)];
-    username.text = [NSString stringWithFormat:@"用户名：%@", self.user.username];
-    [self.view addSubview:username];
-    
-    CGFloat emailX = vMargin;
-    CGFloat emailY = userNameY + userNameH + vMargin;;
-    CGFloat emailW = screenW - 2 * vMargin;
-    CGFloat emailH = 2 * vMargin;
-    UILabel *email = [[UILabel alloc] initWithFrame:CGRectMake(emailX, emailY, emailW, emailH)];
-    email.text = [NSString stringWithFormat:@"邮箱：%@", self.user.email];
-    [self.view addSubview:email];
-    
-    CGFloat nickNameX = vMargin;
-    CGFloat nickNameY = emailY + emailH + vMargin;
-    CGFloat nickNameW = screenW - 2 * vMargin;
-    CGFloat nickNameH = 2 * vMargin;
-    UILabel *nickname = [[UILabel alloc] initWithFrame:CGRectMake(nickNameX, nickNameY, nickNameW, nickNameH)];
-    nickname.text = [NSString stringWithFormat:@"昵称：%@", self.user.nickname];
-    [self.view addSubview:nickname];
-    
-    CGFloat numberX = vMargin;
-    CGFloat numberY = nickNameY + nickNameH + vMargin;
-    CGFloat numberW = screenW - 2 * vMargin;
-    CGFloat numberH = 2 * vMargin;
-    UILabel *number = [[UILabel alloc] initWithFrame:CGRectMake(numberX, numberY, numberW, numberH)];
-    number.text = [NSString stringWithFormat:@"学号：%@", self.user.number];
-    [self.view addSubview:number];
-    
-    CGFloat lastTimeX = vMargin;
-    CGFloat lastTimeY = numberY + numberH + vMargin;
-    CGFloat lastTimeW = screenW - 2 * vMargin;
-    CGFloat lastTimeH = 2 * vMargin;
-    UILabel *lastTime = [[UILabel alloc] initWithFrame:CGRectMake(lastTimeX, lastTimeY, lastTimeW, lastTimeH)];
-    lastTime.text = [NSString stringWithFormat:@"最后登录时间：%@", self.user.last_time];
-    [self.view addSubview:lastTime];
-
-}
 
 @end
