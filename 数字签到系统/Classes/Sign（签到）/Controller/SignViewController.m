@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NSThread sleepForTimeInterval:1.0]; // 启动页延迟一秒
     // 将状态栏设置为白色
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.titleTextAttributes = @{
@@ -32,8 +33,23 @@
     return UIStatusBarStyleLightContent;
 }
 
+#pragma mark 分组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+#pragma mark 每组显示数据数量
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 100;
+    return 2;
+}
+
+#pragma mark 分组头部信息
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return @"正在进行课程";
+    } else {
+        return @"未开始课程";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

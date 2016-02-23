@@ -60,7 +60,6 @@
 		8F1F68A71C6A1D6B0047247D /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68A31C6A1D6B0047247D /* MBProgressHUD.bundle */; };
 		8F1F68A81C6A1D6B0047247D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68A51C6A1D6B0047247D /* MBProgressHUD.m */; };
 		8F1F68AC1C6A249C0047247D /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68AB1C6A249C0047247D /* NSString+Hash.m */; };
-		8F375D331C7AD3ED0026C346 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F375D321C7AD3ED0026C346 /* Storyboard.storyboard */; };
 		8F4DA19E1BD8E2B50037A69D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4DA19D1BD8E2B50037A69D /* main.m */; };
 		8F4DA1A11BD8E2B50037A69D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4DA1A01BD8E2B50037A69D /* AppDelegate.m */; };
 		8F4DA1A91BD8E2B50037A69D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F4DA1A81BD8E2B50037A69D /* Assets.xcassets */; };
@@ -181,7 +180,6 @@
 		8F1F68A51C6A1D6B0047247D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8F1F68AA1C6A249C0047247D /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		8F1F68AB1C6A249C0047247D /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
-		8F375D321C7AD3ED0026C346 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8F4DA1991BD8E2B50037A69D /* 数字签到系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "数字签到系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4DA19D1BD8E2B50037A69D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F4DA19F1BD8E2B50037A69D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 		8F4DA19C1BD8E2B50037A69D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8F375D321C7AD3ED0026C346 /* Storyboard.storyboard */,
 				8F4DA1A81BD8E2B50037A69D /* Assets.xcassets */,
 				8F4DA19F1BD8E2B50037A69D /* AppDelegate.h */,
 				8F4DA1A01BD8E2B50037A69D /* AppDelegate.m */,
@@ -722,7 +719,6 @@
 				8F1F68421C6384110047247D /* second_selected.png in Resources */,
 				8F1F683A1C6384110047247D /* first_selected.png in Resources */,
 				8F1F68641C64EC160047247D /* SignTableViewCell.xib in Resources */,
-				8F375D331C7AD3ED0026C346 /* Storyboard.storyboard in Resources */,
 				8F1F68381C6384110047247D /* first_normal.png in Resources */,
 				8F7FC7EA1C6B56120099C437 /* Info.plist in Resources */,
 				8F1F683F1C6384110047247D /* navigationbar_background_tall@2x.png in Resources */,
