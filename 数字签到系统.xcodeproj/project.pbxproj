@@ -12,7 +12,6 @@
 		8F1F68161C637E380047247D /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68131C637E380047247D /* RDVTabBarItem.m */; };
 		8F1F681C1C637F860047247D /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F681B1C637F860047247D /* SignViewController.m */; };
 		8F1F681F1C637F960047247D /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F681E1C637F960047247D /* PersonalViewController.m */; };
-		8F1F68221C637FAC0047247D /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68211C637FAC0047247D /* StatisticsViewController.m */; };
 		8F1F68381C6384110047247D /* first_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68241C6384110047247D /* first_normal.png */; };
 		8F1F68391C6384110047247D /* first_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68251C6384110047247D /* first_normal@2x.png */; };
 		8F1F683A1C6384110047247D /* first_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68261C6384110047247D /* first_selected.png */; };
@@ -33,9 +32,6 @@
 		8F1F68491C6384110047247D /* third_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68351C6384110047247D /* third_normal@2x.png */; };
 		8F1F684A1C6384110047247D /* third_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68361C6384110047247D /* third_selected.png */; };
 		8F1F684B1C6384110047247D /* third_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68371C6384110047247D /* third_selected@2x.png */; };
-		8F1F68591C64D8AE0047247D /* MCBarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68581C64D8AE0047247D /* MCBarChartViewController.m */; };
-		8F1F685C1C64D8BE0047247D /* MCBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F685B1C64D8BE0047247D /* MCBarChartView.m */; };
-		8F1F685F1C64DA130047247D /* MCChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F685E1C64DA130047247D /* MCChartInformationView.m */; };
 		8F1F68631C64EC160047247D /* SignTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68611C64EC160047247D /* SignTableViewCell.m */; };
 		8F1F68641C64EC160047247D /* SignTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F1F68621C64EC160047247D /* SignTableViewCell.xib */; };
 		8F1F68731C69FBA30047247D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F68671C69FBA30047247D /* AFHTTPSessionManager.m */; };
@@ -74,6 +70,8 @@
 		8F7FC7EC1C6B562E0099C437 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7FC7EB1C6B562E0099C437 /* libsqlite3.0.tbd */; };
 		8F7FC7EF1C6B794C0099C437 /* LoginPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FC7EE1C6B794C0099C437 /* LoginPage.m */; };
 		8F7FC7F21C6B99500099C437 /* UserPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FC7F11C6B99500099C437 /* UserPage.m */; };
+		8FEE2B7A1CDB1A090019B932 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FEE2B791CDB1A090019B932 /* AVFoundation.framework */; };
+		8FEE2B801CDB5FDC0019B932 /* ScanQRController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEE2B7F1CDB5FDC0019B932 /* ScanQRController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +102,6 @@
 		8F1F681B1C637F860047247D /* SignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignViewController.m; sourceTree = "<group>"; };
 		8F1F681D1C637F960047247D /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		8F1F681E1C637F960047247D /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
-		8F1F68201C637FAC0047247D /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
-		8F1F68211C637FAC0047247D /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		8F1F68241C6384110047247D /* first_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first_normal.png; sourceTree = "<group>"; };
 		8F1F68251C6384110047247D /* first_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first_normal@2x.png"; sourceTree = "<group>"; };
 		8F1F68261C6384110047247D /* first_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first_selected.png; sourceTree = "<group>"; };
@@ -126,12 +122,6 @@
 		8F1F68351C6384110047247D /* third_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_normal@2x.png"; sourceTree = "<group>"; };
 		8F1F68361C6384110047247D /* third_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third_selected.png; sourceTree = "<group>"; };
 		8F1F68371C6384110047247D /* third_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_selected@2x.png"; sourceTree = "<group>"; };
-		8F1F68571C64D8AE0047247D /* MCBarChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCBarChartViewController.h; path = "数字签到系统/Classes/Statistics（统计）/Controller/MCBarChartViewController.h"; sourceTree = SOURCE_ROOT; };
-		8F1F68581C64D8AE0047247D /* MCBarChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCBarChartViewController.m; path = "数字签到系统/Classes/Statistics（统计）/Controller/MCBarChartViewController.m"; sourceTree = SOURCE_ROOT; };
-		8F1F685A1C64D8BE0047247D /* MCBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCBarChartView.h; path = "数字签到系统/Classes/Statistics（统计）/View/MCBarChartView.h"; sourceTree = SOURCE_ROOT; };
-		8F1F685B1C64D8BE0047247D /* MCBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCBarChartView.m; path = "数字签到系统/Classes/Statistics（统计）/View/MCBarChartView.m"; sourceTree = SOURCE_ROOT; };
-		8F1F685D1C64DA130047247D /* MCChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCChartInformationView.h; path = "数字签到系统/Classes/Statistics（统计）/View/MCChartInformationView.h"; sourceTree = SOURCE_ROOT; };
-		8F1F685E1C64DA130047247D /* MCChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCChartInformationView.m; path = "数字签到系统/Classes/Statistics（统计）/View/MCChartInformationView.m"; sourceTree = SOURCE_ROOT; };
 		8F1F68601C64EC160047247D /* SignTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignTableViewCell.h; sourceTree = "<group>"; };
 		8F1F68611C64EC160047247D /* SignTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignTableViewCell.m; sourceTree = "<group>"; };
 		8F1F68621C64EC160047247D /* SignTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignTableViewCell.xib; sourceTree = "<group>"; };
@@ -209,6 +199,9 @@
 		8F7FC7EE1C6B794C0099C437 /* LoginPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPage.m; sourceTree = "<group>"; };
 		8F7FC7F01C6B99500099C437 /* UserPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPage.h; sourceTree = "<group>"; };
 		8F7FC7F11C6B99500099C437 /* UserPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPage.m; sourceTree = "<group>"; };
+		8FEE2B791CDB1A090019B932 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8FEE2B7E1CDB5FDC0019B932 /* ScanQRController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanQRController.h; sourceTree = "<group>"; };
+		8FEE2B7F1CDB5FDC0019B932 /* ScanQRController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQRController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FEE2B7A1CDB1A090019B932 /* AVFoundation.framework in Frameworks */,
 				8F7FC7EC1C6B562E0099C437 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +366,7 @@
 		8F4DA1901BD8E2B50037A69D = {
 			isa = PBXGroup;
 			children = (
+				8FEE2B791CDB1A090019B932 /* AVFoundation.framework */,
 				8F7FC7EB1C6B562E0099C437 /* libsqlite3.0.tbd */,
 				8F4DA19B1BD8E2B50037A69D /* 数字签到系统 */,
 				8F4DA1B51BD8E2B50037A69D /* 数字签到系统Tests */,
@@ -436,7 +431,6 @@
 			children = (
 				8F4DA1D81BD8F5260037A69D /* Sign（签到） */,
 				8F4DA1D41BD8F5260037A69D /* Personal（个人中心） */,
-				8F4DA1DC1BD8F5260037A69D /* Statistics（统计） */,
 				8F4DA1D01BD8F5250037A69D /* Other（其他） */,
 			);
 			path = Classes;
@@ -527,6 +521,8 @@
 			children = (
 				8F1F681A1C637F860047247D /* SignViewController.h */,
 				8F1F681B1C637F860047247D /* SignViewController.m */,
+				8FEE2B7E1CDB5FDC0019B932 /* ScanQRController.h */,
+				8FEE2B7F1CDB5FDC0019B932 /* ScanQRController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -544,45 +540,6 @@
 				8F1F68601C64EC160047247D /* SignTableViewCell.h */,
 				8F1F68611C64EC160047247D /* SignTableViewCell.m */,
 				8F1F68621C64EC160047247D /* SignTableViewCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8F4DA1DC1BD8F5260037A69D /* Statistics（统计） */ = {
-			isa = PBXGroup;
-			children = (
-				8F4DA1DD1BD8F5260037A69D /* Controller */,
-				8F4DA1DE1BD8F5260037A69D /* Model */,
-				8F4DA1DF1BD8F5260037A69D /* View */,
-			);
-			path = "Statistics（统计）";
-			sourceTree = "<group>";
-		};
-		8F4DA1DD1BD8F5260037A69D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8F1F68571C64D8AE0047247D /* MCBarChartViewController.h */,
-				8F1F68581C64D8AE0047247D /* MCBarChartViewController.m */,
-				8F1F68201C637FAC0047247D /* StatisticsViewController.h */,
-				8F1F68211C637FAC0047247D /* StatisticsViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		8F4DA1DE1BD8F5260037A69D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8F4DA1DF1BD8F5260037A69D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8F1F685D1C64DA130047247D /* MCChartInformationView.h */,
-				8F1F685E1C64DA130047247D /* MCChartInformationView.m */,
-				8F1F685A1C64D8BE0047247D /* MCBarChartView.h */,
-				8F1F685B1C64D8BE0047247D /* MCBarChartView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -763,13 +720,10 @@
 				8F1F68751C69FBA30047247D /* AFSecurityPolicy.m in Sources */,
 				8F4DA1A11BD8E2B50037A69D /* AppDelegate.m in Sources */,
 				8F1F68631C64EC160047247D /* SignTableViewCell.m in Sources */,
-				8F1F68591C64D8AE0047247D /* MCBarChartViewController.m in Sources */,
-				8F1F68221C637FAC0047247D /* StatisticsViewController.m in Sources */,
 				8F1F681C1C637F860047247D /* SignViewController.m in Sources */,
 				8F1F68961C6A14B40047247D /* MJPropertyKey.m in Sources */,
 				8F1F68761C69FBA30047247D /* AFURLRequestSerialization.m in Sources */,
 				8F1F68971C6A14B40047247D /* MJPropertyType.m in Sources */,
-				8F1F685F1C64DA130047247D /* MCChartInformationView.m in Sources */,
 				8F7FC7E81C6B56120099C437 /* FMDatabaseQueue.m in Sources */,
 				8F1F687C1C6A0E840047247D /* NSArray+Log.m in Sources */,
 				8F7FC7E71C6B56120099C437 /* FMDatabasePool.m in Sources */,
@@ -777,7 +731,6 @@
 				8F1F689A1C6A14B40047247D /* NSObject+MJKeyValue.m in Sources */,
 				8F1F68A81C6A1D6B0047247D /* MBProgressHUD.m in Sources */,
 				8F7FC7EF1C6B794C0099C437 /* LoginPage.m in Sources */,
-				8F1F685C1C64D8BE0047247D /* MCBarChartView.m in Sources */,
 				8F1F68141C637E380047247D /* RDVTabBar.m in Sources */,
 				8F1F689C1C6A14B40047247D /* NSString+MJExtension.m in Sources */,
 				8F7FC7E61C6B56120099C437 /* FMDatabaseAdditions.m in Sources */,
@@ -796,6 +749,7 @@
 				8F1F689B1C6A14B40047247D /* NSObject+MJProperty.m in Sources */,
 				8F1F68161C637E380047247D /* RDVTabBarItem.m in Sources */,
 				8F1F68731C69FBA30047247D /* AFHTTPSessionManager.m in Sources */,
+				8FEE2B801CDB5FDC0019B932 /* ScanQRController.m in Sources */,
 				8F1F68981C6A14B40047247D /* NSObject+MJClass.m in Sources */,
 				8F1F68951C6A14B40047247D /* MJProperty.m in Sources */,
 			);
@@ -924,7 +878,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "数字签到系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "XiongSiYao.------";
+				PRODUCT_BUNDLE_IDENTIFIER = XiongSiYao.studentsign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -939,7 +893,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "数字签到系统/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "XiongSiYao.------";
+				PRODUCT_BUNDLE_IDENTIFIER = XiongSiYao.studentsign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -9,10 +9,8 @@
 #import "AppDelegate.h"
 #import "SignViewController.h"
 #import "PersonalViewController.h"
-#import "StatisticsViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
-#import "MCBarChartViewController.h"
 
 @interface AppDelegate ()
 
@@ -46,15 +44,12 @@
     UIViewController *personalNavigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:personalViewController];
     
-    UIViewController *statistcsViewController = [[MCBarChartViewController alloc] init];
-    UIViewController *statistcsNavigationController = [[UINavigationController alloc]
-                                                   initWithRootViewController:statistcsViewController];
     
     RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
-    [tabBarController setViewControllers:@[statistcsNavigationController ,signNavigationController, personalNavigationController]];
+    [tabBarController setViewControllers:@[signNavigationController, personalNavigationController]];
     self.viewController = tabBarController;
     
-    tabBarController.selectedIndex = 1;
+    tabBarController.selectedIndex = 0;
     
     [self customizeTabBarForController:tabBarController];
 }
@@ -62,7 +57,7 @@
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
     UIImage *finishedImage = [UIImage imageNamed:@"tabbar_selected_background"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_normal_background"];
-    NSArray *tabBarItemImages = @[@"first", @"second", @"third"];
+    NSArray *tabBarItemImages = @[@"second", @"third"];
     
     NSInteger index = 0;
     for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
