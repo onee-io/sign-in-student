@@ -16,10 +16,10 @@
 
 
 ## 应用截图
-![image](https://github.com/VOREVER/SignIn-Student/blob/master/screenshots/IMG_0979.jpg)
-![image](https://github.com/VOREVER/SignIn-Student/blob/master/screenshots/IMG_0981.jpg)
-![image](https://github.com/VOREVER/SignIn-Student/blob/master/screenshots/IMG_0977.jpg)
+![image](./screenshots/IMG_0979.jpg)
+![image](./screenshots/IMG_0981.jpg)
+![image](./screenshots/IMG_0977.jpg)
 
 ## 另一个对应的APP
 
-教师端客户端请点链接：[SignIn-Teacher](https://github.com/VOREVER/SignIn-Teacher)
+教师端客户端请点链接：[sign-in-teacher](https://github.com/onee-io/sign-in-teacher)
